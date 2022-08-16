@@ -14,6 +14,14 @@ mongoose
     console.error('Error connecting to mongo', err)
   })
 
+corsMiddleware = function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'https://ns-jwt-angular-auth.netlify.app/');
+  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
+  
+  res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
+  next();
+}
+
 
 // Express settings
 const app = express()
@@ -23,6 +31,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(cors())
 app.use('/api', router)
+app.use(corsMiddleware)
 // Serve static resources
 // Define PORT
 const port = process.env.PORT || 3000
