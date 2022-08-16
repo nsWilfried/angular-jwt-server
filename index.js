@@ -15,7 +15,7 @@ mongoose
   })
 
 corsMiddleware = function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://ns-jwt-angular-auth.netlify.app/');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
   
   res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
@@ -33,7 +33,7 @@ app.use(cors())
 app.use('/api', router)
 app.use(corsMiddleware)
 
-app.route('/', (res, req) => {
+app.get('/', (res, req) => {
   res.send('hello')
 })
 // Serve static resources
