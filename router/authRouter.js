@@ -3,7 +3,11 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const router = express.Router()
 const userSchema = require('../models/User')
-
+router.get('/', (req, res) => { 
+  res.status(200).json({
+    msg: 'Bienvenu sur api '
+  })
+})
 router.post('/register', (req, res) => {
   bcrypt.hash(req.body.password, 10).then((hash) => {
     const user = new userSchema({
