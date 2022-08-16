@@ -32,6 +32,10 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use('/api', router)
 app.use(corsMiddleware)
+
+app.route('/', (res, req) => {
+  res.send('hello')
+})
 // Serve static resources
 // Define PORT
 const port = process.env.PORT || 3000
