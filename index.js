@@ -20,9 +20,7 @@ app.use(bodyParser.urlencoded({
   extended:  false
 }))
 app.use(bodyParser.json())
-app.use(cors({
-  origin : '*'
-}))
+app.use(cors())
 app.use('/api', router)
 // Serve static resources
 // Define PORT
