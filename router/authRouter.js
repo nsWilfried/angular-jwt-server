@@ -3,9 +3,9 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const router = express.Router()
 const userSchema = require('../models/User')
-router.get('/', (req, res) => { 
+router.get('/register', (req, res) => { 
   res.status(200).json({
-    msg: 'Bienvenu sur api '
+    msg: 'Bienvenu sur le register '
   })
 })
 router.post('/register', (req, res) => {
