@@ -24,7 +24,7 @@ app.use(cors())
 app.use('/api', router)
 // Serve static resources
 // Define PORT
-const port = 4000
+const port = process.env.PORT || 3000
 const server = app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
