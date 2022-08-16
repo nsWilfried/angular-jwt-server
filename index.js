@@ -2,10 +2,11 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+require('dotenv').config()
 // Express APIs
 const router = require('./router/authRouter')
 mongoose
-  .connect('mongodb+srv://nsWilfried:wilfried0640@cluster0.4kjx0ye.mongodb.net/?retryWrites=true&w=majority')
+  .connect(process.env.MONGODBURI)
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
