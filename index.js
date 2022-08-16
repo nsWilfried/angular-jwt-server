@@ -16,22 +16,13 @@ mongoose
     console.error('Error connecting to mongo', err)
   })
 
-corsMiddleware = function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
-  
-  res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
-  next();
-}
-
-
 // Express settings
 const app = express()
 app.use(bodyParser.urlencoded({
   extended:  false
 }))
 app.use(bodyParser.json())
-app.use(corsMiddleware)
+app.use(cors())
 
 app.use('/api', router)
 app.use('/', defaultRouter)

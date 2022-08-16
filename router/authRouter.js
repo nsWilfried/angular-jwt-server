@@ -23,7 +23,9 @@ router.post('/register', (req, res) => {
         })
       })
       .catch((error) => {
-        console.log('error', error)
+        res.status(200).json({
+          message: "erreur lors du register"
+        })
       })
     return user;
   })
