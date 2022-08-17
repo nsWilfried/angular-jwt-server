@@ -10,7 +10,7 @@ router.get('/register', (req, res) => {
     msg: 'Bienvenu sur le register '
   })
 })
-router.post('/register',cors(), (req, res) => {
+router.post('/register', (req, res) => {
   bcrypt.hash(req.body.password, 10).then((hash) => {
     const user = new userSchema({
       username: req.body.username,
@@ -32,7 +32,7 @@ router.post('/register',cors(), (req, res) => {
     return user;
   })
 })
-router.post('/login',cors(),  (req, res) => {
+router.post('/login',  (req, res) => {
   let getUser;
   return userSchema
     .findOne({
