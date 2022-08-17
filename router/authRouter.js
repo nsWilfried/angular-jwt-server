@@ -3,12 +3,14 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const router = express.Router()
 const userSchema = require('../models/User')
+const cors = require('cors')
+
 router.get('/register', (req, res) => { 
   res.status(200).json({
     msg: 'Bienvenu sur le register '
   })
 })
-router.post('/register', (req, res) => {
+router.post('/register',cors(), (req, res) => {
   bcrypt.hash(req.body.password, 10).then((hash) => {
     const user = new userSchema({
       username: req.body.username,
@@ -30,7 +32,7 @@ router.post('/register', (req, res) => {
     return user;
   })
 })
-router.post('/login', (req, res) => {
+router.post('/login',cors(),  (req, res) => {
   let getUser;
   return userSchema
     .findOne({
