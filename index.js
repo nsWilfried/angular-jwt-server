@@ -5,7 +5,6 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 // Express APIs
 const router = require('./router/authRouter')
-const defaultRouter = require('./router/defaultRouter')
 
 mongoose
   .connect(process.env.MONGODBURI)
@@ -25,7 +24,6 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.use('/api', router)
-app.use('/', defaultRouter)
 
 // Serve static resources
 // Define PORT
